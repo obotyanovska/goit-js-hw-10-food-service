@@ -17,7 +17,6 @@ function createMenuList (array) {
 }
 createMenuList (menu);
 
-
 checkBoxRef.addEventListener('change', onCheckBoxChange);
 
 colorizeTheme ();
@@ -26,17 +25,13 @@ function onCheckBoxChange (e) {
     const bodyDarkTheme = document.querySelector('.dark-theme');
     
     if (!bodyDarkTheme) {
-      
       localStorage.setItem('theme', Theme.DARK);
-      colorizeTheme ()
-      
-      bodyRef.classList.remove(Theme.LIGHT);
+      removeClasslist(Theme.LIGHT)
     }  else {
       localStorage.setItem('theme', Theme.LIGHT);
-      colorizeTheme ()
-      bodyRef.classList.remove(Theme.DARK);
+      removeClasslist(Theme.DARK)
     }
-    
+    colorizeTheme ()
 }
 
 function colorizeTheme () {
@@ -51,4 +46,8 @@ function colorizeTheme () {
   if(bodyDarkTheme) {
     checkBoxRef.setAttribute('checked', true);
   }
+}
+
+function removeClasslist(color){
+  bodyRef.classList.remove(color);
 }
